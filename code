@@ -1,0 +1,81 @@
+#include<stdio.h>
+#include<cs50.h>
+#include<ctype.h>
+#include<string.h>
+#include <stdlib.h>
+
+int alphaindex(char a);
+char toascii(int b);
+
+int main (int argc, string argv[])
+{
+    if (argc == 2)
+    {
+        int k = atoi(argv[1]);
+        string text = get_string(" ");
+        int n = strlen(text);
+        int l;
+        char ctext[n+1];
+        ctext[n] = '\0';
+        int indexn [n];
+        for (l = 0; l < n; l++)
+        {
+            if (isalpha(text[l]))
+            {
+                indexn[l] = (alphaindex(text[l]) + k) % 26;
+            }
+            else
+            {
+                indexn[l] = -1;
+            }
+        }
+
+        for (l = 0; l < n; l++)
+        {
+            if (isalpha(text[l]))
+            {
+                if(isupper(text[l]))
+                {
+                    ctext[l] = toascii (indexn[l]);
+                }
+                else
+                {
+                    ctext[l] = tolower (toascii (indexn[l]));
+                }
+            }
+            else
+            {
+                ctext[l] = text[l];
+            }
+        }
+        for (l = 0; l < n; l++)
+        {
+            printf("%c", ctext[l]);
+        }
+        printf("\n");
+    }
+    else
+    {
+        printf("need 2 command line arguments\n");
+        return(0);
+    }
+}
+
+int alphaindex(char a)
+{
+    int n;
+    if (isupper(a))
+    {
+       return n = a - 65;
+    }
+    else
+    {
+       return n = a - 97;
+    }
+}
+
+char toascii(int b)
+{
+    char m = b + 65;
+    return m;
+}
