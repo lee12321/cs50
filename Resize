@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
     int paddingin = (4 - (bi.biWidth / n * sizeof(RGBTRIPLE)) % 4) % 4;
     int padding = (4 - (bi.biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
 
-    RGBTRIPLE* arr[bi.biWidth - padding + 1];
+    RGBTRIPLE arr[bi.biWidth - padding + 1];
 
     // iterate over infile's scanlines
     for (int i = 0, biHeight = abs(bi.biHeight); i < (biHeight / n); i ++)
@@ -105,7 +105,7 @@ int main(int argc, char *argv[])
 
         for(int p = 0; p < bi.biWidth - padding; p++ )
         {
-            fread(arr[p], sizeof(RGBTRIPLE), 1, outptr);
+            fread(&arr[p], sizeof(RGBTRIPLE), 1, outptr);
         }
         fseek(outptr, bi.biWidth-1, SEEK_CUR);
 
@@ -113,7 +113,7 @@ int main(int argc, char *argv[])
         {
             for(int t = 0; t < bi.biWidth - padding; t++)
             {
-                fwrite(arr[t], sizeof(RGBTRIPLE), 1, outptr);
+                fwrite(&arr[t], sizeof(RGBTRIPLE), 1, outptr);
             }
             for (int k = 0; k < padding; k++)
                 fputc(0x00, outptr);
