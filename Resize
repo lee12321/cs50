@@ -75,14 +75,12 @@ int main(int argc, char *argv[])
     int paddingin = (4 - (bi.biWidth / n * sizeof(RGBTRIPLE)) % 4) % 4;
     int padding = (4 - (bi.biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
 
-    RGBTRIPLE arr[bi.biWidth - padding + 1];
-
     // iterate over infile's scanlines
-    for (int i = 0, biHeight = abs(bi.biHeight); i < (biHeight / n); i ++)
+    for (int i = 0, biHeight = abs(bi.biHeight); i < biHeight / n; i ++)
     {
 
         // iterate over pixels in scanline
-        for (int j = 0; j < ((bi.biWidth - padding) / n); j ++)
+        for (int j = 0; j < bi.biWidth / n; j ++)
         {
             // temporary storage
             RGBTRIPLE triple;
@@ -95,32 +93,25 @@ int main(int argc, char *argv[])
                 fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr);
         }
 
+        // skip over padding, if any
+        fseek(inptr, paddingin, SEEK_CUR);
+
         // then add it back (to demonstrate how)
         for (int k = 0; k < padding; k++)
         {
             fputc(0x00, outptr);
         }
-
-        fseek(outptr, -bi.biWidth+1, SEEK_CUR);
-
-        for(int p = 0; p < bi.biWidth - padding; p++ )
-        {
-            fread(&arr[p], sizeof(RGBTRIPLE), 1, outptr);
-        }
-        fseek(outptr, bi.biWidth-1, SEEK_CUR);
-
-        for(int q = 0; q < n; q++)
-        {
-            for(int t = 0; t < bi.biWidth - padding; t++)
-            {
-                fwrite(&arr[t], sizeof(RGBTRIPLE), 1, outptr);
-            }
-            for (int k = 0; k < padding; k++)
-                fputc(0x00, outptr);
-        }
-
-        // skip over padding, if any
-        fseek(inptr, paddingin, SEEK_CUR);
+         //declare an array
+         RGBTRIPLE arr[bi.biWidth];
+         //set pointer to start of the line
+         fseek(outptr, - bi.biWidth * sizeof(RGBTRIPLE), SEEK_CUR);
+         //read the whole line to the array
+         fread(arr, sizeof(RGBTRIPLE), bi.biWidth, outptr);
+         //write the whole array to the output file n times
+         for(int q = 0; q < n-1; q++)
+         {
+             fwrite(arr, sizeof(RGBTRIPLE), bi.biWidth, outptr);
+         }
     }
 
     // close infile
