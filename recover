@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
+    if (argc != 2)
+    {
+        fprintf(stderr, "Usage: Recover jpeg file\n");
+        return 1;
+    }
+
+    FILE *raw = fopen(argv[1], "r");
+    if (raw == NULL)
+    {
+        fprintf(stderr, "Could not open %s.\n", argv[1]);
+        return 2;
+    }
+
+    unsigned char buffer[512];
+
+    // skip the bytes which is not of jpeg
+    do
+    {
+        fread(&buffer, sizeof(char), 512, raw);
+    }
+    while (buffer[0] != 0xff ||
+           buffer[1] != 0xd8 ||
+           buffer[2] != 0xff ||
+           (buffer[3] & 0xf0) != 0xe0);
+
+    char filename[7] = ("initial");
+
+    FILE *img = fopen(filename, "w");
+
+    int i = 0;
+
+    do
+    {
+        // find the jpeg file header
+        if(buffer[0] == 0xff &&
+           buffer[1] == 0xd8 &&
+           buffer[2] == 0xff &&
+           (buffer[3] & 0xf0) == 0xe0)
+        {
+            fclose(img);
+            //  create a new jpeg file
+            sprintf(filename, "%03i.jpg", i);
+            img = fopen(filename, "w");
+            fwrite(&buffer, sizeof(char), 512, img);
+            i ++;
+        }
+        else
+        {
+            // wirte the jpeg file
+            fwrite(&buffer, sizeof(char), 512, img);
+        }
+    }
+    while(fread(&buffer, sizeof(char), 512, raw) == 512);
+
+    fclose(raw);
+    fclose(img);
+}
