@@ -1,0 +1,92 @@
+--1513-- REDIR: 0x4019e20 (ld-linux-x86-64.so.2:strlen) redirected to 0x380764b1 (???)
+--1513-- Reading syms from /usr/lib/valgrind/vgpreload_core-amd64-linux.so
+--1513--   Considering /usr/lib/valgrind/vgpreload_core-amd64-linux.so ..
+--1513--   .. CRC mismatch (computed 4bcdfe99 wanted 3143e841)
+--1513--    object doesn't have a symbol table
+--1513-- Reading syms from /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+--1513--   Considering /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so ..
+--1513--   .. CRC mismatch (computed 3df18bf1 wanted 14fefe1c)
+--1513--    object doesn't have a symbol table
+==1513== WARNING: new redirection conflicts with existing -- ignoring it
+--1513--     old: 0x04019e20 (strlen              ) R-> (0000.0) 0x380764b1 ???
+--1513--     new: 0x04019e20 (strlen              ) R-> (2007.0) 0x04c2e1a0 strlen
+--1513-- REDIR: 0x4019bd0 (ld-linux-x86-64.so.2:index) redirected to 0x4c2dd50 (index)
+--1513-- REDIR: 0x4019df0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c2f2f0 (strcmp)
+--1513-- REDIR: 0x401ab40 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c31da0 (mempcpy)
+--1513-- Reading syms from /lib/x86_64-linux-gnu/libpthread-2.19.so
+--1513--   Considering /lib/x86_64-linux-gnu/libpthread-2.19.so ..
+--1513--   .. CRC mismatch (computed 1382eed1 wanted 4a16bf62)
+--1513--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libpthread-2.19.so ..
+--1513--   .. CRC is valid
+--1513-- Reading syms from /lib/x86_64-linux-gnu/librt-2.19.so
+--1513--   Considering /lib/x86_64-linux-gnu/librt-2.19.so ..
+--1513--   .. CRC mismatch (computed 50c8f93a wanted c3fbe380)
+--1513--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/librt-2.19.so ..
+--1513--   .. CRC is valid
+--1513-- Reading syms from /lib/x86_64-linux-gnu/libm-2.19.so
+--1513--   Considering /lib/x86_64-linux-gnu/libm-2.19.so ..
+--1513--   .. CRC mismatch (computed 46e9308f wanted f111fa3b)
+--1513--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libm-2.19.so ..
+--1513--   .. CRC is valid
+--1513-- Reading syms from /lib/x86_64-linux-gnu/libdl-2.19.so
+--1513--   Considering /lib/x86_64-linux-gnu/libdl-2.19.so ..
+--1513--   .. CRC mismatch (computed 5d7e0b7f wanted fa906fa8)
+--1513--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libdl-2.19.so ..
+--1513--   .. CRC is valid
+--1513-- Reading syms from /lib/x86_64-linux-gnu/libgcc_s.so.1
+--1513--   Considering /lib/x86_64-linux-gnu/libgcc_s.so.1 ..
+--1513--   .. CRC mismatch (computed 6116126e wanted 54e3f1f2)
+--1513--    object doesn't have a symbol table
+--1513-- Reading syms from /lib/x86_64-linux-gnu/libc-2.19.so
+--1513--   Considering /lib/x86_64-linux-gnu/libc-2.19.so ..
+--1513--   .. CRC mismatch (computed dc5fac54 wanted 7053531b)
+--1513--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.19.so ..
+--1513--   .. CRC is valid
+--1513-- REDIR: 0x5a0a070 (libc.so.6:strcasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--1513-- REDIR: 0x5a0c360 (libc.so.6:strncasecmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--1513-- REDIR: 0x5a09840 (libc.so.6:memcpy@GLIBC_2.2.5) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--1513-- REDIR: 0x5a07ad0 (libc.so.6:rindex) redirected to 0x4c2da30 (rindex)
+--1513-- REDIR: 0x5a00550 (libc.so.6:calloc) redirected to 0x4c2cbf0 (calloc)
+--1513-- REDIR: 0x59ffa80 (libc.so.6:malloc) redirected to 0x4c2ab10 (malloc)
+--1513-- REDIR: 0x5a08720 (libc.so.6:__GI_strstr) redirected to 0x4c32030 (__strstr_sse2)
+--1513-- REDIR: 0x5a0ea90 (libc.so.6:__GI_memcpy) redirected to 0x4c2fc90 (__GI_memcpy)
+--1513-- REDIR: 0x5a04380 (libc.so.6:strcmp) redirected to 0x4a25720 (_vgnU_ifunc_wrapper)
+--1513-- REDIR: 0x5ac0a40 (libc.so.6:__strcmp_ssse3) redirected to 0x4c2f1b0 (strcmp)
+--1513-- REDIR: 0x5a00120 (libc.so.6:free) redirected to 0x4c2bd80 (free)
+--1513-- REDIR: 0x5a10dd0 (libc.so.6:strchrnul) redirected to 0x4c319b0 (strchrnul)
+WORDS MISSPELLED:     28
+WORDS IN DICTIONARY:  0
+WORDS IN TEXT:        28
+TIME IN load:         0.04
+TIME IN check:        0.01
+TIME IN size:         0.00
+TIME IN unload:       0.02
+TIME IN TOTAL:        0.06
+
+==1513== 
+==1513== HEAP SUMMARY:
+==1513==     in use at exit: 15,008 bytes in 67 blocks
+==1513==   total heap usage: 70 allocs, 3 frees, 16,368 bytes allocated
+==1513== 
+==1513== Searching for pointers to 67 not-freed blocks
+==1513== Checked 10,997,144 bytes
+==1513== 
+==1513== 224 bytes in 1 blocks are still reachable in loss record 1 of 2
+==1513==    at 0x4C2CC70: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1513==    by 0x422484: load (dictionary.c:38)
+==1513==    by 0x420982: main (speller.c:40)
+==1513== 
+==1513== 14,784 bytes in 66 blocks are still reachable in loss record 2 of 2
+==1513==    at 0x4C2CC70: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1513==    by 0x4227C4: load (dictionary.c:67)
+==1513==    by 0x420982: main (speller.c:40)
+==1513== 
+==1513== LEAK SUMMARY:
+==1513==    definitely lost: 0 bytes in 0 blocks
+==1513==    indirectly lost: 0 bytes in 0 blocks
+==1513==      possibly lost: 0 bytes in 0 blocks
+==1513==    still reachable: 15,008 bytes in 67 blocks
+==1513==         suppressed: 0 bytes in 0 blocks
+==1513== 
+==1513== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==1513== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
