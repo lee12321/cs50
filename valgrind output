@@ -90,3 +90,43 @@ TIME IN TOTAL:        0.06
 ==1513== 
 ==1513== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 ==1513== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+
+Outputs for loading the large dictionary:
+==1408== Stack overflow in thread 1: can't grow stack to 0xffe801ff8
+==1408== 
+==1408== Process terminating with default action of signal 11 (SIGSEGV)
+==1408==  Access not within mapped region at address 0xFFE801FF8
+==1408==    at 0x59F650B: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1281)
+==1408==  If you believe this happened as a result of a stack
+==1408==  overflow in your program's main thread (unlikely but
+==1408==  possible), you can try to increase the size of the
+==1408==  main thread stack using the --main-stacksize= flag.
+==1408==  The main thread stack size used in this run was 8388608.
+==1408== Stack overflow in thread 1: can't grow stack to 0xffe801ff0
+==1408== 
+==1408== Process terminating with default action of signal 11 (SIGSEGV)
+==1408==  Access not within mapped region at address 0xFFE801FF0
+==1408==    at 0x4A256B0: _vgnU_freeres (in /usr/lib/valgrind/vgpreload_core-amd64-linux.so)
+==1408==  If you believe this happened as a result of a stack
+==1408==  overflow in your program's main thread (unlikely but
+==1408==  possible), you can try to increase the size of the
+==1408==  main thread stack using the --main-stacksize= flag.
+==1408==  The main thread stack size used in this run was 8388608.
+==1408== 
+==1408== HEAP SUMMARY:
+==1408==     in use at exit: 322,387,296 bytes in 1,439,229 blocks
+==1408==   total heap usage: 1,439,231 allocs, 2 frees, 322,388,432 bytes allocated
+==1408== 
+==1408== LEAK SUMMARY:
+==1408==    definitely lost: 0 bytes in 0 blocks
+==1408==    indirectly lost: 0 bytes in 0 blocks
+==1408==      possibly lost: 0 bytes in 0 blocks
+==1408==    still reachable: 322,387,296 bytes in 1,439,229 blocks
+==1408==         suppressed: 0 bytes in 0 blocks
+==1408== Reachable blocks (those to which a pointer was found) are not shown.
+==1408== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1408== 
+==1408== For counts of detected and suppressed errors, rerun with: -v
+==1408== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+Segmentation fault
